@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روابط مهمة</title>
+</head>
+<body>
+     <style>
+    body{
+      font-family: "Segoe UI", Tahoma, Arial, "Noto Naskh Arabic", sans-serif;
+      direction: rtl;
+      text-align: center;
+      padding: 28px;
+      background: #fffdf8;
+      color: #3b2b22;
+    }
+    .card{
+      max-width: 420px;
+      margin: 12px auto;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      background: #fff;
+    }
+    h1{ margin: 0 0 8px 0; font-size: 20px; }
+    p.small{ margin: 0 0 18px 0; color: #6a5a51; font-size: 14px; }
+    .btn{
+      display: block;
+      margin: 10px auto;
+      padding: 12px 14px;
+      width: 85%;
+      max-width: 320px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 0;
+      cursor: pointer;
+    }
+    .twitter{ background:#1DA1F2; color:white; }
+    .snap{ background:#fffc00; color:#000; }
+    .wa{ background:#25D366; color:white; }
+    .qr{
+      margin-top: 18px;
+    }
+    small.note{ display:block; margin-top:8px; color:#7a6b63; font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class="card" id="main-card">
+    <h1>جمعية مبادرون لتنمية المهارات الذاتية</h1>
+    <p class="small">مرر زر فتح لزيارة الحساب أو ابدأ محادثة واتساب مباشرة.</p>
+
+    <!-- تويتر -->
+    <a id="twitterLink" class="btn twitter" target="_blank" rel="noopener noreferrer"
+       href="https://twitter.com/Mubadiruon">@Mubadiruon — تويتر</a>
+
+    <!-- سناب شات -->
+    <a id="snapLink" class="btn snap" target="_blank" rel="noopener noreferrer"
+       href="https://www.snapchat.com/add/mubadiruon">mubadiruon — سناب</a>
+
+    <!-- واتساب: يتم تكوين الرابط آمنًا عبر الجافاسكربت -->
+    <a id="waLink" class="btn wa" target="_blank" rel="noopener noreferrer"
+       href="#">ابدأ محادثة واتساب</a>
+
+    <div class="qr" id="qrArea">
+      <p class="small">رابط الصفحة التي تحتوي الروابط:</p>
+      <a id="pageUrl" href="#" target="_blank" rel="noopener noreferrer"></a>
+      <div id="qrImgWrapper"></div>
+      <small class="note">اختبر المسح قبل الطباعة. الموقع يعمل أفضل إذا استضافته عبر HTTPS.</small>
+    </div>
+  </div>
+
+<script>
+  // ======= إعداداتك (عدّل هنا إذا احتجت) =======
+  const twitterProfile = "https://twitter.com/Mubadiruon";
+  const snapchatProfile = "https://www.snapchat.com/add/mubadiruon";
+  const whatsappPhone = "966535525594"; // رقم بدون + أو مسافات: مثال: 9665xxxxxxxx
+  const whatsappMessage = "جمعية مبادرون لتنمية المهارات الذاتيه ترحب بك، هل تحتاج مساعدة ؟";
+
+  // ======= لا تحتاج لتعديل ما بعد هذا السطر =======
+  document.getElementById('twitterLink').href = twitterProfile;
+  document.getElementById('snapLink').href = snapchatProfile;
+
+  // انشاء رابط واتساب مشفّر
+  const waHref = "https://wa.me/" + whatsappPhone + "?text=" + encodeURIComponent(whatsappMessage);
+  const waAnchor = document.getElementById('waLink');
+  waAnchor.href = waHref;
+  waAnchor.innerText = "ابدأ محادثة واتساب (" + "+966 53 552 5594" + ")";
+
+  // رابط الصفحة الحالية: إذا استضافت الصفحة سيأخذ URL الاستضافة
+  // أما عند فتح الملف محليًا فسيعرض اسم الملف لذلك يفضل رفعه لاستضافة مجانية.
+  const currentUrl = window.location.href;
+  const pageUrlAnchor = document.getElementById('pageUrl');
+  pageUrlAnchor.href = currentUrl;
+  pageUrlAnchor.innerText = currentUrl;
+
+</script>
+</body>
+</html>
