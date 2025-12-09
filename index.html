@@ -1,100 +1,445 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>روابط مهمة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-     <style>
-    body{
-      font-family: "Segoe UI", Tahoma, Arial, "Noto Naskh Arabic", sans-serif;
-      direction: rtl;
-      text-align: center;
-      padding: 28px;
-      background: #fffdf8;
-      color: #3b2b22;
-    }
-    .card{
-      max-width: 420px;
-      margin: 12px auto;
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-      background: #fff;
-    }
-    h1{ margin: 0 0 8px 0; font-size: 20px; }
-    p.small{ margin: 0 0 18px 0; color: #6a5a51; font-size: 14px; }
-    .btn{
-      display: block;
-      margin: 10px auto;
-      padding: 12px 14px;
-      width: 85%;
-      max-width: 320px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      border: 0;
-      cursor: pointer;
-    }
-    .twitter{ background:#1DA1F2; color:white; }
-    .snap{ background:#fffc00; color:#000; }
-    .wa{ background:#25D366; color:white; }
-    .qr{
-      margin-top: 18px;
-    }
-    small.note{ display:block; margin-top:8px; color:#7a6b63; font-size:13px; }
-  </style>
-</head>
-<body>
-  <div class="card" id="main-card">
-    <h1>جمعية مبادرون لتنمية المهارات الذاتية</h1>
-    <p class="small">مرر زر فتح لزيارة الحساب أو ابدأ محادثة واتساب مباشرة.</p>
-
-    <!-- تويتر -->
-    <a id="twitterLink" class="btn twitter" target="_blank" rel="noopener noreferrer"
-       href="https://twitter.com/Mubadiruon">@Mubadiruon — تويتر</a>
-
-    <!-- سناب شات -->
-    <a id="snapLink" class="btn snap" target="_blank" rel="noopener noreferrer"
-       href="https://www.snapchat.com/add/mubadiruon">mubadiruon — سناب</a>
-
-    <!-- واتساب: يتم تكوين الرابط آمنًا عبر الجافاسكربت -->
-    <a id="waLink" class="btn wa" target="_blank" rel="noopener noreferrer"
-       href="#">ابدأ محادثة واتساب</a>
-
-    <div class="qr" id="qrArea">
-      <p class="small">رابط الصفحة التي تحتوي الروابط:</p>
-      <a id="pageUrl" href="#" target="_blank" rel="noopener noreferrer"></a>
-      <div id="qrImgWrapper"></div>
-      <small class="note">اختبر المسح قبل الطباعة. الموقع يعمل أفضل إذا استضافته عبر HTTPS.</small>
+    <style>
+        :root {
+            --primary:#183f6c;
+            --primary-light:#2a4e78;
+            --secondary: #f89100;
+            --secondary-light: #ffcc33;
+            --light: #f9f7f2;
+            --dark: #1e3a2a;
+            --gray: #ff8400;
+            --gray-light: #e8f0ea;
+            --twitter: #131313;
+            --snapchat: #FFFC00;
+            --whatsapp: #25D366;
+            --shadow: 0 10px 30px rgba(42, 107, 71, 0.08);
+            --shadow-hover: 0 15px 35px rgba(42, 107, 71, 0.15);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+            background: linear-gradient(135deg, #f9f7f2 0%, #e8f0ea 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        /* شعار الجمعية */
+        .logo-header {
+            background: white;
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(42, 107, 71, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo-text {
+            margin-right: 15px;
+            text-align: right;
+        }
+        
+        .logo-text h1 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 5px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .logo-text p {
+            color: var(--gray);
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .logo-image {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: contain;
+            box-shadow: 0 5px 15px rgba(42, 107, 71, 0.2);
+            margin-bottom: 10px;
+            border: 4px solid white;
+            outline: 2px solid var(--primary);
+            background-color: white;
+            padding: 5px;
+            animation: pulse 3s infinite ease-in-out;
+        }
+        /* البطاقة الرئيسية */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(42, 107, 71, 0.1);
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .card-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .card-header h2 {
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .card-header p {
+            color: #ff8400;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* الأزرار */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 22px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            text-align: right;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .btn-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .btn-name {
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .btn-desc {
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        .btn-arrow {
+            font-size: 18px;
+            opacity: 0.7;
+        }
+        
+        .twitter {
+            background: linear-gradient(135deg, var(--twitter), #1a8cd8);
+            color: white;
+        }
+        
+        .snap {
+            background: linear-gradient(135deg, var(--snapchat), #e6e600);
+            color: #000;
+        }
+        
+        .snap .btn-desc {
+            color: #333;
+        }
+        
+        .wa {
+            background: linear-gradient(135deg, var(--whatsapp), #1da851);
+            color: white;
+        }
+        
+        /* قسم المعلومات */
+        .info-section {
+            background: var(--gray-light);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .info-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .info-text {
+            font-size: 14px;
+            color: var(--primary-light);
+            line-height: 1.6;
+        }
+        
+        /* الفوتر */
+        .footer {
+            text-align: center;
+            padding: 20px 0 10px;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .footer p {
+            margin-bottom: 8px;
+        }
+        
+        /* تأثيرات للشعار */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 500px) {
+            body {
+                padding: 15px;
+            }
+            
+            .logo-header {
+                padding: 20px 15px;
+            }
+            
+            .logo-text h1 {
+                font-size: 20px;
+            }
+            
+            .logo-image {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .card {
+                padding: 25px 20px;
+            }
+            
+            .btn {
+                padding: 16px 18px;
+            }
+            
+            .btn-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+        }
+    </style>
+    
+    <div class="container">
+        <!-- رأس الصفحة مع الشعار -->
+        <div class="logo-header">
+            <div class="logo-container">
+                <!-- هنا يتم وضع شعار الجمعية الفعلي -->
+                <img src="logo_equiv.png" alt="شعار جمعية مبادرون" class="logo-image">
+                <div class="logo-text">
+                    <h1>جمعية مبادرون لتنمية المهارات الذاتية</h1>
+                    <p>نمكن العقول..ونطلق الطاقات</p>
+                </div>
+            </div>
+            <p style="color: var(--primary-light); font-size: 14px; margin-top: 10px;">
+                <i class="fas fa-star" style="color: var(--secondary); margin-left: 5px;"></i>
+                روابط التواصل الرسمية للجمعية
+            </p>
+        </div>
+        
+        <!-- البطاقة الرئيسية -->
+        <div class="card">
+            <div class="card-header">
+                <h2>تواصل مع مبادرون لتنمية المهارات الذاتية</h2>
+                <p>اختر إحدى القنوات للتواصل معنا، أو ابدأ محادثة مباشرة على واتساب</p>
+            </div>
+            
+            <div class="links-container">
+                <!-- تويتر -->
+                <a id="twitterLink" class="btn twitter" target="_blank" rel="noopener noreferrer" href="#">
+                    <div class="btn-content">
+                        <div class="btn-icon">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <div class="btn-text">
+                            <span class="btn-name">تويتر / X</span>
+                            <span class="btn-desc">@Mubadiruon - تابع آخر أخبار الجمعية</span>
+                        </div>
+                    </div>
+                    <div class="btn-arrow">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                </a>
+                
+                <!-- سناب شات -->
+                <a id="snapLink" class="btn snap" target="_blank" rel="noopener noreferrer" href="#">
+                    <div class="btn-content">
+                        <div class="btn-icon">
+                            <i class="fab fa-snapchat-ghost"></i>
+                        </div>
+                        <div class="btn-text">
+                            <span class="btn-name">سناب شات</span>
+                            <span class="btn-desc">mubadiruon - تابعنا على السناب شات</span>
+                        </div>
+                    </div>
+                    <div class="btn-arrow">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                </a>
+                
+                <!-- واتساب -->
+                <a id="waLink" class="btn wa" target="_blank" rel="noopener noreferrer" href="#">
+                    <div class="btn-content">
+                        <div class="btn-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="btn-text">
+                            <span class="btn-name">واتساب</span>
+                            <span class="btn-desc">ابدأ محادثة مباشرة معنا</span>
+                        </div>
+                    </div>
+                    <div class="btn-arrow">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- قسم المعلومات -->
+            <div class="info-section">
+                <h3 class="info-title">مبادرون لتنمية المهارات الذاتية</h3>
+                <p class="info-text">
+                    نعمل على تنمية المهارات الذاتية للأفراد والمساهمة في بناء مجتمع واعي ومتمكن.
+                    تواصل معنا عبر أي من القنوات أعلاه للاستفسار أو المشاركة في برامجنا.
+                </p>
+            </div>
+        </div>
+        
+        <!-- الفوتر -->
+        <div class="footer">
+            <p>جمعية مبادرون لتنمية المهارات الذاتية © 2025</p>
+            <p>جميع الحقوق محفوظة</p>
+        </div>
     </div>
-  </div>
 
-<script>
-  // ======= إعداداتك (عدّل هنا إذا احتجت) =======
-  const twitterProfile = "https://twitter.com/Mubadiruon";
-  const snapchatProfile = "https://www.snapchat.com/add/mubadiruon";
-  const whatsappPhone = "966535525594"; // رقم بدون + أو مسافات: مثال: 9665xxxxxxxx
-  const whatsappMessage = "جمعية مبادرون لتنمية المهارات الذاتيه ترحب بك، هل تحتاج مساعدة ؟";
-
-  // ======= لا تحتاج لتعديل ما بعد هذا السطر =======
-  document.getElementById('twitterLink').href = twitterProfile;
-  document.getElementById('snapLink').href = snapchatProfile;
-
-  // انشاء رابط واتساب مشفّر
-  const waHref = "https://wa.me/" + whatsappPhone + "?text=" + encodeURIComponent(whatsappMessage);
-  const waAnchor = document.getElementById('waLink');
-  waAnchor.href = waHref;
-  waAnchor.innerText = "ابدأ محادثة واتساب (" + "+966 53 552 5594" + ")";
-
-  // رابط الصفحة الحالية: إذا استضافت الصفحة سيأخذ URL الاستضافة
-  // أما عند فتح الملف محليًا فسيعرض اسم الملف لذلك يفضل رفعه لاستضافة مجانية.
-  const currentUrl = window.location.href;
-  const pageUrlAnchor = document.getElementById('pageUrl');
-  pageUrlAnchor.href = currentUrl;
-  pageUrlAnchor.innerText = currentUrl;
-
-</script>
+    <script>
+        // ======= إعدادات الروابط =======
+        const twitterProfile = "https://twitter.com/Mubadiruon";
+        const snapchatProfile = "https://www.snapchat.com/add/mubadiruon";
+        const whatsappPhone = "966535525594"; // رقم بدون + أو مسافات
+        const whatsappMessage = "جمعية مبادرون لتنمية المهارات الذاتية ترحب بك، هل تحتاج مساعدة؟";
+        
+        // ======= تعيين الروابط في الأزرار =======
+        document.getElementById('twitterLink').href = twitterProfile;
+        document.getElementById('snapLink').href = snapchatProfile;
+        
+        // إنشاء رابط واتساب مشفّر
+        const waHref = "https://wa.me/" + whatsappPhone + "?text=" + encodeURIComponent(whatsappMessage);
+        const waAnchor = document.getElementById('waLink');
+        waAnchor.href = waHref;
+        
+        // تحسين عرض رقم الواتساب بشكل أكثر وضوحاً
+        const formattedPhone = "+966 53 552 5594";
+        waAnchor.querySelector('.btn-desc').textContent = `ابدأ محادثة مباشرة (${formattedPhone})`;
+        
+        // ======= إضافة تأثيرات تفاعلية =======
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('.btn-icon');
+                icon.style.transform = 'scale(1.1)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('.btn-icon');
+                icon.style.transform = 'scale(1)';
+            });
+        });
+        
+        // إشعار بتحميل الصفحة
+        window.addEventListener('load', function() {
+            console.log('تم تحميل صفحة روابط جمعية مبادرون بنجاح');
+        });
+    </script>
 </body>
 </html>
